@@ -10,6 +10,8 @@ requests = "*"
 beautifulsoup4 = "*"
 lxml = "*"
 requests-html = "*"
+pandas = "^2.1.1"
+pyperclip = "^1.8.2"
 
 [tool.poetry.dev-dependencies]
 pytest = "*"
