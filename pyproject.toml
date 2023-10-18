@@ -1,9 +1,11 @@
 [tool.poetry]
 name = "root"
 version = "0.0.0"
+description = ""
+authors = [""]
 
 [tool.poetry.dependencies]
-python = "==3.9"
+python = "~3.9"
 requests = "*"
 beautifulsoup4 = "*"
 lxml = "*"
@@ -11,6 +13,7 @@ requests-html = "*"
 
 [tool.poetry.dev-dependencies]
 pytest = "*"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
