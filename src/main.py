@@ -4,18 +4,11 @@ import os
 
 import pyperclip
 
-from src.url_parser import fetch_ingredients_from_url
-from src.utils import is_url, ensure_list
+from url_parser import fetch_ingredients_from_url
+from utils import is_url, ensure_list
 
 INGREDIENTS_TO_CHECK_FILE_NAME = "../check.txt"
 
-
-# def get_ingredients_from_text_file() -> List[str]:
-#     with open(INGREDIENTS_TO_CHECK_FILE_NAME) as f:
-#         ingredients = f.readlines()
-#
-#     return [x.strip().lower() for x in ingredients[0].split(',')]
-#
 
 def load_bad_ingredients() -> List[str]:
     """
@@ -25,7 +18,7 @@ def load_bad_ingredients() -> List[str]:
 
     :return: list of ingredients that are known to be comedogenic in lowercase.
     """
-    file_path = os.path.join(os.getcwd(), 'list_bad.txt')
+    file_path = os.path.join(os.getcwd(), "list_bad.txt")
     with open(file_path) as f:
         bad_ingredients = f.readlines()
     return [x.strip().lower() for x in bad_ingredients]
@@ -56,22 +49,30 @@ def compare(ingredients: List[str], reference: List[str]) -> None:
     """
     n = len(ingredients)
     for index, ingredient in enumerate(ingredients):
-        close_options = difflib.get_close_matches(ingredient, reference, n=1, cutoff=0.8)
+        # idea: can run this on multiple cutoff values
+        close_options = difflib.get_close_matches(
+            ingredient, reference, n=1, cutoff=0.8
+        )
         if len(close_options) > 0:
-            print('{ingredient} | {index} out of {total} ingredient'.format(ingredient=ingredient.capitalize(),
-                                                                            index=index, total=n))
-            print('{close_options}\n'.format(close_options=close_options))
+            print(
+                "{ingredient} | {index} out of {total} ingredient".format(
+                    ingredient=ingredient.capitalize(), index=index, total=n
+                )
+            )
+            print("{close_options}\n".format(close_options=close_options))
     return
 
 
 def parse_input() -> List[str]:
     contents = pyperclip.paste()
+
+    list_raw = ensure_list(contents)
     if is_url(contents):
-        return fetch_ingredients_from_url(contents)
-    return ensure_list(contents)
+        list_raw = fetch_ingredients_from_url(contents)
+    return [x.lower() for x in list_raw]
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     comedogenic_data = load_bad_ingredients()
     product_ingredients = parse_input()
 

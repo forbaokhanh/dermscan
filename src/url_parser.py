@@ -7,10 +7,12 @@ from bs4 import BeautifulSoup
 import requests
 
 # Local application imports
-from src.IngredientLookupError import IngredientLookupError
+from IngredientLookupError import IngredientLookupError
 
 
-def make_request_with_retries(url: str, timeout: int = 5, retries: int = 2, backoff_factor: float = 0.3) -> str:
+def make_request_with_retries(
+    url: str, timeout: int = 5, retries: int = 2, backoff_factor: float = 0.3
+) -> str:
     """
     Makes an HTTP GET request with retries and backoff.
 
@@ -32,9 +34,11 @@ def make_request_with_retries(url: str, timeout: int = 5, retries: int = 2, back
         except requests.RequestException as e:
             exceptions.append(e)
 
-        sleep(backoff_factor * (2 ** i))
+        sleep(backoff_factor * (2**i))
 
-    raise Exception(f"Failed to retrieve URL after {retries} retries with {timeout} timeout. Exceptions: {exceptions}")
+    raise Exception(
+        f"Failed to retrieve URL after {retries} retries with {timeout} timeout. Exceptions: {exceptions}"
+    )
 
 
 def parse_ingredients(ingredients_str: str) -> List[str]:
@@ -60,19 +64,19 @@ def scrape_sephora(html: str) -> List[str]:
     Returns:
     - List[str]: List of ingredients if found, otherwise None.
     """
-    soup = BeautifulSoup(html, 'html.parser')
-    ingredients_div = soup.find('div', {'id': 'ingredients'})
+    soup = BeautifulSoup(html, "html.parser")
+    ingredients_div = soup.find("div", {"id": "ingredients"})
 
     if ingredients_div:
         raw_text = ingredients_div.text.strip()
         # Splitting the text by <br><br> to get paragraphs
-        paragraphs = raw_text.split('<br><br>')
+        paragraphs = raw_text.split("<br><br>")
 
         # Take the last paragraph if more than one, otherwise take the single paragraph
         relevant_paragraph = paragraphs[-1] if len(paragraphs) > 1 else paragraphs[0]
 
         # Converting this to an array of strings, separated by commas
-        ingredients_array = relevant_paragraph.split(', ')
+        ingredients_array = relevant_paragraph.split(", ")
         return ingredients_array
     return []
 
@@ -87,14 +91,14 @@ def scrape_ulta(html_content: str) -> list[str]:
     Returns:
     - list[str]: List of ingredients, each as a separate string.
     """
-    soup = BeautifulSoup(html_content, 'html.parser')
-    ingredients_section = soup.find('details', {'aria-controls': 'Ingredients'})
+    soup = BeautifulSoup(html_content, "html.parser")
+    ingredients_section = soup.find("details", {"aria-controls": "Ingredients"})
 
     if ingredients_section:
-        p_tag = ingredients_section.find('p')
+        p_tag = ingredients_section.find("p")
         if p_tag:
             ingredients_text = p_tag.get_text()
-            return [i.strip() for i in ingredients_text.split(',') if i.strip()]
+            return [i.strip() for i in ingredients_text.split(",") if i.strip()]
 
     return []
 
@@ -109,14 +113,16 @@ def scrape_amazon(html: str) -> List[str]:
     Returns:
     - List[str]: List of ingredients.
     """
-    soup = BeautifulSoup(html, 'html.parser')
+    soup = BeautifulSoup(html, "html.parser")
     section = soup.find("div", {"class": "a-section content"})
     if section:
-        p_tags = section.find_all('p')
+        p_tags = section.find_all("p")
         for p in p_tags:
             if "Active Ingredients:" in p.text or "Inactive Ingredients:" in p.text:
                 # Extract text and clean it
-                ingredients_text = p.text.replace("Active Ingredients:", "").replace("Inactive Ingredients:", "")
+                ingredients_text = p.text.replace("Active Ingredients:", "").replace(
+                    "Inactive Ingredients:", ""
+                )
                 return parse_ingredients(ingredients_text)
     return []
 
@@ -132,9 +138,9 @@ def generic_scrape(html: str) -> List[str]:
     - List[str]: List of ingredients.
     """
     likely_keywords = ["ingredients:", "contains:", "ingredient list:"]
-    soup = BeautifulSoup(html, 'html.parser')
+    soup = BeautifulSoup(html, "html.parser")
 
-    for tag in ['p', 'div', 'li', 'span']:
+    for tag in ["p", "div", "li", "span"]:
         for elem in soup.find_all(tag):
             if any(keyword in elem.text.lower() for keyword in likely_keywords):
                 return parse_ingredients(elem.text)

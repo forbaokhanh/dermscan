@@ -2,10 +2,10 @@ import pytest
 from src.url_parser import fetch_ingredients_from_url, IngredientLookupError
 
 # Define URLs for Sephora, Ulta, and Amazon products that are known to have ingredients
-SEPHORA_URL = 'https://www.sephora.com/product/euk-134-0-1-P442833?skuId=2210656'  # Replace with an actual URL
-ULTA_URL = 'https://www.ulta.com/p/brilliant-gloss-glass-hair-anti-frizz-serum-pimprod2034432?sku=2600787'  # Replace with an actual URL
-AMAZON_URL = 'https://www.amazon.com/dp/B002ZNJYRA/ref=sspa_dk_offsite_brave_1?aaxitk=9c33c153d99a33b717c46eeaa875335e&th=1'  # Replace with an actual URL
-GENERIC_URL = 'https://helloseen.com/products/seen-shampoo?variant=40416510672979'  # Replace with an actual URL
+SEPHORA_URL = "https://www.sephora.com/product/euk-134-0-1-P442833?skuId=2210656"  # Replace with an actual URL
+ULTA_URL = "https://www.ulta.com/p/brilliant-gloss-glass-hair-anti-frizz-serum-pimprod2034432?sku=2600787"  # Replace with an actual URL
+AMAZON_URL = "https://www.amazon.com/dp/B002ZNJYRA/ref=sspa_dk_offsite_brave_1?aaxitk=9c33c153d99a33b717c46eeaa875335e&th=1"  # Replace with an actual URL
+GENERIC_URL = "https://helloseen.com/products/seen-shampoo?variant=40416510672979"  # Replace with an actual URL
 
 
 def test_fetch_ingredients_from_sephora_url():
