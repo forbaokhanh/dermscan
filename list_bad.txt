@@ -5,7 +5,8 @@ algin
 butyl stearate
 carrageenan
 cetyl acetate
-cetearyl alcohol + ceteareth 20
+cetearyl alcohol
+ceteareth 20
 chondrus crispus
 Irish Moss
 Seaweed
@@ -26,7 +27,7 @@ dioctyl succinate
 disodium monooleamido PEG 2 sulfusuccinate
 ethoxylated lanolin
 ethylhexyl palmitate
-glyceryl-3 diisostearate, Glyceral Stearate SE
+glyceryl-3 diisostearate
 glyceryl stearate SE
 hexadecyl alcohol
 hydrogenated vegetable oil
@@ -42,7 +43,8 @@ isostearyl neopentanoate
 kelp
 Laminaria Digitata Extract
 Laminaria Saccharina
-Laureth-4, Laureth-23
+Laureth-4
+Laureth-23
 Lauric Acid
 Lauroyl Lysine
 Mink Oil
@@ -69,7 +71,7 @@ Sea Whip Extract
 Shark Liver Oil
 Squalene
 Shea Butter
-Sodium Chloride (not if it’s at the end of the formula)
+Sodium Chloride
 Sodium Laureth Sulfate
 Sodium Lauryl Sulfate
 Sodium Coco Sulfate
