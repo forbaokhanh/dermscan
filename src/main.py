@@ -63,7 +63,9 @@ def load_cache(filepath: str) -> Dict[str, Ingredient]:
     ingredients = {}
 
     for index, row in df.iterrows():
-        ingredient = Ingredient(row["Name"], int(row["Comedogenicity"]), int(row["Irritancy"]))
+        ingredient = Ingredient(
+            row["Name"], int(row["Comedogenicity"]), int(row["Irritancy"])
+        )
         assert ingredient.name not in ingredients
         ingredients[ingredient.name] = ingredient
     return ingredients

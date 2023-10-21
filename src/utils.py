@@ -24,9 +24,7 @@ def is_url(string: str) -> bool:
         return False
 
 
-def print_result(
-    alerts: List[Ingredient], warnings: List[MatchedIngredient]
-) -> None:
+def print_result(alerts: List[Ingredient], warnings: List[MatchedIngredient]) -> None:
     console = Console()
     if not alerts and not warnings:
         console.print("✅ Product is completely clear!", style="bold green")
@@ -36,11 +34,11 @@ def print_result(
 
         console.print("🚨 Alerts 🚨", style="bold red")
         for alert in alerts:
-            console.print(f"- {alert}", style="bold red")
+            console.print(f"- {alert.name} [bold red]{alert.comedogenicity}[/bold red]")
     elif warnings:
-        warnings.sort(key=lambda x: x.comedogenicity, reverse=True)
+        warnings.sort(key=lambda x: x.matched_ingredient.comedogenicity, reverse=True)
 
-        print("⚠️ Warnings ⚠️")
+        console.print("⚠️ Warnings ⚠️")
         for warning in warnings:
-            console.print(f"- {warning}", style="#808080")
+            console.print(warning.format_warning())
     return
