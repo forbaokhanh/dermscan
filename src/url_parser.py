@@ -2,12 +2,12 @@
 from time import sleep
 from typing import List
 
+import requests
 # Third-party imports
 from bs4 import BeautifulSoup
-import requests
 
 # Local application imports
-from IngredientLookupError import IngredientLookupError
+from src.IngredientLookupError import IngredientLookupError
 
 
 def make_request_with_retries(

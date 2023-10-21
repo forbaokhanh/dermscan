@@ -2,7 +2,12 @@
 name = "root"
 version = "0.0.0"
 description = ""
-authors = [""]
+authors = ["Khanh Tran"]
+include = ["data/*.csv"]
+packages = [
+    { include = "src/", from = "." }
+]
+
 
 [tool.poetry.dependencies]
 python = "~3.9"
@@ -12,6 +17,7 @@ lxml = "*"
 requests-html = "*"
 pandas = "^2.1.1"
 pyperclip = "^1.8.2"
+thefuzz = "^0.20.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "*"
@@ -19,6 +25,7 @@ pytest = "*"
 [tool.poetry.group.dev.dependencies]
 black = "^23.10.0"
 rich = "^13.6.0"
+isort = "^5.12.0"
 
 [build-system]
 requires = ["poetry-core"]

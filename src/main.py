@@ -1,69 +1,27 @@
-from typing import List
-import difflib
-import os
+from pathlib import Path
+from typing import Dict, List, Tuple
 
+import pandas as pd
 import pyperclip
+from thefuzz import fuzz, process
 
-from url_parser import fetch_ingredients_from_url
-from utils import is_url, ensure_list
+from src.script import Ingredient, MatchedIngredient
+from src.url_parser import fetch_ingredients_from_url
+from src.utils import ensure_list, is_url, print_result
 
-INGREDIENTS_TO_CHECK_FILE_NAME = "../check.txt"
-
-
-def load_bad_ingredients() -> List[str]:
-    """
-    Locates on disk and loads a list of known comedogenic ingredients.
-    The current reference file is called 'list_bad.txt' and it's placed in the root folder.
-    The contents of that file are organized in a new line.
-
-    :return: list of ingredients that are known to be comedogenic in lowercase.
-    """
-    file_path = os.path.join(os.getcwd(), "list_bad.txt")
-    with open(file_path) as f:
-        bad_ingredients = f.readlines()
-    return [x.strip().lower() for x in bad_ingredients]
-
-
-def compare(ingredients: List[str], reference: List[str]) -> None:
-    """
-    Compares a list of ingredients against a list of comedogenic data to find close matches.
-
-    The function iterates over each ingredient in the `ingredients` list and searches for close matches
-    within the `reference` list using difflib's get_close_matches function. If a close match is found,
-    the ingredient, its index in the list, and the close match are printed to the console.
-
-    Parameters:
-    - ingredients (List[str]): A list of ingredient names to compare.
-    - reference (List[str]): A list of comedogenic data against which to compare the ingredients.
-
-    Returns:
-    - None: The function prints the matching data to the console and returns None.
-
-    Example:
-    >>> compare(['Acetone', 'Almond oil'], ['Acetone (0)*', 'Almond oil (1-2)*'])
-    Acetone | 0 out of 2 ingredient
-    ['Acetone (0)*']
-
-    Almond oil | 1 out of 2 ingredient
-    ['Almond oil (1-2)*']
-    """
-    n = len(ingredients)
-    for index, ingredient in enumerate(ingredients):
-        # idea: can run this on multiple cutoff values
-        close_options = difflib.get_close_matches(
-            ingredient, reference, n=1, cutoff=0.8
-        )
-        if len(close_options) > 0:
-            print(
-                "{ingredient} | {index} out of {total} ingredient".format(
-                    ingredient=ingredient.capitalize(), index=index, total=n
-                )
-            )
-            print("{close_options}\n".format(close_options=close_options))
-    return
+DATA_FOLDER = Path(__file__).parent.parent / "data"
+CSV_FILEPATH = str(DATA_FOLDER / "product_info.csv")
 
 
 def parse_input() -> List[str]:
+    """
+    Defines all possible input to comparison logic.
+    Currently, we assume either a URL or ingredient contents were present
+    in the clipboard.
+
+    :return: list of ingredients relevant to the product under question.
+    Normalize all ingredient entries to be lower case.
+    """
     contents = pyperclip.paste()
 
     list_raw = ensure_list(contents)
@@ -72,8 +30,78 @@ def parse_input() -> List[str]:
     return [x.lower() for x in list_raw]
 
 
+def load_cache(filepath: str) -> Dict[str, Ingredient]:
+    """
+    Load ingredient data from a CSV file into a dictionary.
+
+    This function reads a CSV file specified by `filepath` and populates a
+    dictionary where the keys are ingredient names and the values are
+    `Ingredient` objects. The function assumes that all ingredient
+    names in the file are unique; if not, an assertion error will be raised.
+
+    Parameters:
+    -----------
+    filepath : str
+        The file path to the CSV file containing ingredient data.
+
+    Returns:
+    --------
+    Dict[str, Ingredient]
+        A dictionary containing ingredient names as keys and `Ingredient` objects as values.
+
+    Raises:
+    -------
+    AssertionError
+        If duplicate ingredient names are found in the CSV file.
+
+    Example:
+    --------
+    >>> load_cache("ingredient_data.csv")
+    {'Water': <Ingredient object>, ...}
+    """
+    df = pd.read_csv(filepath, sep=",")
+    ingredients = {}
+
+    for index, row in df.iterrows():
+        ingredient = Ingredient(row["Name"], int(row["Comedogenicity"]), int(row["Irritancy"]))
+        assert ingredient.name not in ingredients
+        ingredients[ingredient.name] = ingredient
+    return ingredients
+
+
+def compare(
+    ingredients: List[str], reference: Dict[str, Ingredient]
+) -> Tuple[List[Ingredient], List[MatchedIngredient]]:
+    reference_names = reference.keys()
+    alert_worthy = []
+    warning_worthy = []
+
+    for entry in ingredients[: len(ingredients) // 2]:
+        entry = entry.title()
+        match, similarity = process.extractOne(
+            entry, reference_names, scorer=fuzz.partial_token_sort_ratio
+        )
+        matched_ingredient = reference[match]
+        comedogenicity = reference[match].comedogenicity
+
+        # Condition for 100% similarity
+        if similarity == 100:
+            if comedogenicity >= 4:
+                alert_worthy.append(matched_ingredient)
+            elif comedogenicity == 3:
+                warning_worthy.append(MatchedIngredient(entry, matched_ingredient))
+
+        # Condition for similarity between 80 and 100 and high comedogenicity
+        elif 80 < similarity < 100 and comedogenicity >= 3:
+            warning_worthy.append(MatchedIngredient(entry, matched_ingredient))
+
+    return alert_worthy, warning_worthy
+
+
 if __name__ == "__main__":
-    comedogenic_data = load_bad_ingredients()
     product_ingredients = parse_input()
 
-    compare(product_ingredients, comedogenic_data)
+    comedogenic_references = load_cache(CSV_FILEPATH)
+
+    alerts, warnings = compare(product_ingredients, comedogenic_references)
+    print_result(alerts, warnings)
