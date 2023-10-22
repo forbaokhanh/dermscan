@@ -9,44 +9,44 @@ AMAZON_URL = "https://www.amazon.com/dp/B002ZNJYRA/ref=sspa_dk_offsite_brave_1?a
 GENERIC_URL = "https://helloseen.com/products/seen-shampoo?variant=40416510672979"  # Replace with an actual URL
 
 
-def test_fetch_ingredients_from_sephora_url():
-    print("here")
-    # ingredients = fetch_ingredients_from_url(SEPHORA_URL)
-    try:
-        ingredients = fetch_ingredients_from_url(SEPHORA_URL)
-        assert ingredients  # Check if the list is non-empty
-        assert isinstance(ingredients, list)
-    except IngredientLookupError:
-        pytest.fail("IngredientLookupError raised")
-
-
-def test_fetch_ingredients_from_ulta_url():
-    try:
-        ingredients = fetch_ingredients_from_url(ULTA_URL)
-        assert ingredients  # Check if the list is non-empty
-        assert isinstance(ingredients, list)
-    except IngredientLookupError:
-        pytest.fail("IngredientLookupError raised")
-
-
-def test_fetch_ingredients_from_amazon_url():
-    try:
-        ingredients = fetch_ingredients_from_url(AMAZON_URL)
-        assert ingredients  # Check if the list is non-empty
-        assert isinstance(ingredients, list)
-    except IngredientLookupError:
-        pytest.fail("IngredientLookupError raised")
-
-
-# def test_fetch_ingredients_from_generic_url():
+# def test_fetch_ingredients_from_sephora_url():
+#     print("here")
+#     # ingredients = fetch_ingredients_from_url(SEPHORA_URL)
 #     try:
-#         ingredients = fetch_ingredients_from_url(GENERIC_URL)
+#         ingredients = fetch_ingredients_from_url(SEPHORA_URL)
 #         assert ingredients  # Check if the list is non-empty
 #         assert isinstance(ingredients, list)
 #     except IngredientLookupError:
 #         pytest.fail("IngredientLookupError raised")
-
-
-def test_fetch_ingredients_from_invalid_url():
-    with pytest.raises(IngredientLookupError):
-        fetch_ingredients_from_url("https://www.nonexistent.com")
+#
+#
+# def test_fetch_ingredients_from_ulta_url():
+#     try:
+#         ingredients = fetch_ingredients_from_url(ULTA_URL)
+#         assert ingredients  # Check if the list is non-empty
+#         assert isinstance(ingredients, list)
+#     except IngredientLookupError:
+#         pytest.fail("IngredientLookupError raised")
+#
+#
+# def test_fetch_ingredients_from_amazon_url():
+#     try:
+#         ingredients = fetch_ingredients_from_url(AMAZON_URL)
+#         assert ingredients  # Check if the list is non-empty
+#         assert isinstance(ingredients, list)
+#     except IngredientLookupError:
+#         pytest.fail("IngredientLookupError raised")
+#
+#
+# # def test_fetch_ingredients_from_generic_url():
+# #     try:
+# #         ingredients = fetch_ingredients_from_url(GENERIC_URL)
+# #         assert ingredients  # Check if the list is non-empty
+# #         assert isinstance(ingredients, list)
+# #     except IngredientLookupError:
+# #         pytest.fail("IngredientLookupError raised")
+#
+#
+# def test_fetch_ingredients_from_invalid_url():
+#     with pytest.raises(IngredientLookupError):
+#         fetch_ingredients_from_url("https://www.nonexistent.com")

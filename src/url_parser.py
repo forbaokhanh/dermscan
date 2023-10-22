@@ -3,6 +3,7 @@ from time import sleep
 from typing import List
 
 import requests
+
 # Third-party imports
 from bs4 import BeautifulSoup
 
