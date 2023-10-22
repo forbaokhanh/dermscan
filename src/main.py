@@ -1,3 +1,4 @@
+import sys
 from pathlib import Path
 from typing import Dict, List, Tuple
 
@@ -9,7 +10,17 @@ from src.script import Ingredient, MatchedIngredient
 from src.url_parser import fetch_ingredients_from_url
 from src.utils import ensure_list, is_url, print_result
 
-DATA_FOLDER = Path(__file__).parent.parent / "data"
+if getattr(sys, "frozen", False):
+    # Running as compiled
+    BASE_DIR = Path(sys._MEIPASS)
+    # sys._MEIPASS -> Attribute set by PyInstaller when your application is bundled into a single executable.
+    # It provides the path to a temporary folder that PyInstaller creates to store your script and all its dependencies.
+else:
+    # Running as script,
+    # Assuming this file is under src/main.py and the datafiles are under data/*.csv
+    BASE_DIR = Path(__file__).parent.parent
+
+DATA_FOLDER = BASE_DIR / "data"
 CSV_FILEPATH = str(DATA_FOLDER / "product_info.csv")
 
 
