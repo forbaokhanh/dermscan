@@ -1,6 +1,6 @@
 import pytest
 
-from src.url_parser import IngredientLookupError, fetch_ingredients_from_url
+from dermscan.url_parser import IngredientLookupError, fetch_ingredients_from_url
 
 # Define URLs for Sephora, Ulta, and Amazon products that are known to have ingredients
 SEPHORA_URL = "https://www.sephora.com/product/euk-134-0-1-P442833?skuId=2210656"  # Replace with an actual URL

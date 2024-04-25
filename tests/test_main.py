@@ -3,8 +3,8 @@ from pathlib import Path
 import pyperclip
 import pytest
 
-from src.main import CSV_FILEPATH, compare, load_cache, parse_input
-from src.utils import print_result
+from dermscan.main import CSV_FILEPATH, compare, load_cache, parse_input
+from dermscan.utils import print_result
 
 
 @pytest.fixture

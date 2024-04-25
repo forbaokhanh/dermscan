@@ -4,7 +4,7 @@ from urllib.parse import urlparse
 from rich import print
 from rich.console import Console
 
-from src.script import Ingredient, MatchedIngredient
+from dermscan.script import Ingredient, MatchedIngredient
 
 
 def ensure_list(var):

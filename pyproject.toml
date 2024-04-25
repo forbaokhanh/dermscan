@@ -10,7 +10,7 @@ packages = [
 
 
 [tool.poetry.dependencies]
-python = "~3.9"
+python = ">=3.12,<3.13"
 requests = "*"
 beautifulsoup4 = "*"
 lxml = "*"
@@ -30,3 +30,6 @@ pyinstaller = "^6.1.0"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+ingredient-scanner = 'ingredient_scanner:main'

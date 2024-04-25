@@ -6,9 +6,9 @@ import pandas as pd
 import pyperclip
 from thefuzz import fuzz, process
 
-from src.script import Ingredient, MatchedIngredient
-from src.url_parser import fetch_ingredients_from_url
-from src.utils import ensure_list, is_url, print_result
+from dermscan.script import Ingredient, MatchedIngredient
+from dermscan.url_parser import fetch_ingredients_from_url
+from dermscan.utils import ensure_list, is_url, print_result
 
 if getattr(sys, "frozen", False):
     # Running as compiled
@@ -17,7 +17,7 @@ if getattr(sys, "frozen", False):
     # It provides the path to a temporary folder that PyInstaller creates to store your script and all its dependencies.
 else:
     # Running as script,
-    # Assuming this file is under src/main.py and the datafiles are under data/*.csv
+    # Assuming this file is under dermscan/main.py and the datafiles are under data/*.csv
     BASE_DIR = Path(__file__).parent.parent
 
 DATA_FOLDER = BASE_DIR / "data"
