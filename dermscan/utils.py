@@ -1,30 +1,11 @@
 from typing import List
-from urllib.parse import urlparse
 
-from rich import print
 from rich.console import Console
 
-from dermscan.script import Ingredient, MatchedIngredient
+from dermscan.models import Ingredient, Match
 
 
-def ensure_list(var):
-    if isinstance(var, list):
-        return var
-    elif isinstance(var, str):
-        return [x.strip().strip(".") for x in var.split(",")]
-    else:
-        raise TypeError(f"Unsupported type: {type(var)}")
-
-
-def is_url(string: str) -> bool:
-    try:
-        result = urlparse(string)
-        return all([result.scheme, result.netloc])
-    except ValueError:
-        return False
-
-
-def print_result(alerts: List[Ingredient], warnings: List[MatchedIngredient]) -> None:
+def print_result(alerts: List[Ingredient], warnings: List[Match]) -> None:
     console = Console()
     if not alerts and not warnings:
         console.print("✅ Product is completely clear!", style="bold green")

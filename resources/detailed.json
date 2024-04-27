@@ -1,0 +1,497 @@
+[
+    {
+        "name": "octyl stearate",
+        "comedogenicity": 5,
+        "irritancy": 5
+    },
+    {
+        "name": "algae extract",
+        "comedogenicity": 5,
+        "irritancy": 4
+    },
+    {
+        "name": "laureth 4",
+        "comedogenicity": 5,
+        "irritancy": 4
+    },
+    {
+        "name": "isopropyl myristate",
+        "comedogenicity": 5,
+        "irritancy": 3
+    },
+    {
+        "name": "sodium chloride",
+        "comedogenicity": 5,
+        "irritancy": 3
+    },
+    {
+        "name": "carrageenan",
+        "comedogenicity": 5,
+        "irritancy": 2
+    },
+    {
+        "name": "oleth-3",
+        "comedogenicity": 5,
+        "irritancy": 2
+    },
+    {
+        "name": "red algea",
+        "comedogenicity": 5,
+        "irritancy": 2
+    },
+    {
+        "name": "sodium lauryl sulfate",
+        "comedogenicity": 5,
+        "irritancy": 2
+    },
+    {
+        "name": "wheat germ oil",
+        "comedogenicity": 5,
+        "irritancy": 2
+    },
+    {
+        "name": "isocetyl stearate",
+        "comedogenicity": 5,
+        "irritancy": 0
+    },
+    {
+        "name": "isopropyl isostearate",
+        "comedogenicity": 5,
+        "irritancy": 0
+    },
+    {
+        "name": "algin",
+        "comedogenicity": 4,
+        "irritancy": 4
+    },
+    {
+        "name": "peg 16 lanolin",
+        "comedogenicity": 4,
+        "irritancy": 3
+    },
+    {
+        "name": "acetylated lanolin alcohol",
+        "comedogenicity": 4,
+        "irritancy": 2
+    },
+    {
+        "name": "coconut oil",
+        "comedogenicity": 4,
+        "irritancy": 1
+    },
+    {
+        "name": "lauric acid",
+        "comedogenicity": 4,
+        "irritancy": 1
+    },
+    {
+        "name": "octyl palmitate",
+        "comedogenicity": 4,
+        "irritancy": 1
+    },
+    {
+        "name": "acetylated lanolin",
+        "comedogenicity": 4,
+        "irritancy": 0
+    },
+    {
+        "name": "cocoa butter",
+        "comedogenicity": 4,
+        "irritancy": 0
+    },
+    {
+        "name": "coconut butter",
+        "comedogenicity": 4,
+        "irritancy": 0
+    },
+    {
+        "name": "isopropyl palmitate",
+        "comedogenicity": 4,
+        "irritancy": 0
+    },
+    {
+        "name": "propylene glycol monostearate",
+        "comedogenicity": 4,
+        "irritancy": 0
+    },
+    {
+        "name": "syearyl heptanoate",
+        "comedogenicity": 4,
+        "irritancy": 0
+    },
+    {
+        "name": "colloidal sulfur",
+        "comedogenicity": 3,
+        "irritancy": 4
+    },
+    {
+        "name": "dioctyl succinate",
+        "comedogenicity": 3,
+        "irritancy": 2
+    },
+    {
+        "name": "glyceryl stearate se",
+        "comedogenicity": 3,
+        "irritancy": 2
+    },
+    {
+        "name": "peg 75 lanolin",
+        "comedogenicity": 3,
+        "irritancy": 2
+    },
+    {
+        "name": "sodium laureth sulfate",
+        "comedogenicity": 3,
+        "irritancy": 2
+    },
+    {
+        "name": "sulfated castor oil",
+        "comedogenicity": 3,
+        "irritancy": 2
+    },
+    {
+        "name": "sulfated jojoba oil",
+        "comedogenicity": 3,
+        "irritancy": 2
+    },
+    {
+        "name": "peg 8 stearate",
+        "comedogenicity": 3,
+        "irritancy": 1
+    },
+    {
+        "name": "butyl stearate",
+        "comedogenicity": 3,
+        "irritancy": 0
+    },
+    {
+        "name": "corn oil",
+        "comedogenicity": 3,
+        "irritancy": 0
+    },
+    {
+        "name": "d&c red # 17",
+        "comedogenicity": 3,
+        "irritancy": 0
+    },
+    {
+        "name": "d&c red # 21",
+        "comedogenicity": 3,
+        "irritancy": 0
+    },
+    {
+        "name": "d&c red # 3",
+        "comedogenicity": 3,
+        "irritancy": 0
+    },
+    {
+        "name": "laureth 23",
+        "comedogenicity": 3,
+        "irritancy": 0
+    },
+    {
+        "name": "myristic acid",
+        "comedogenicity": 3,
+        "irritancy": 0
+    },
+    {
+        "name": "soybean oil",
+        "comedogenicity": 3,
+        "irritancy": 0
+    },
+    {
+        "name": "benzoic acid",
+        "comedogenicity": 2,
+        "irritancy": 3
+    },
+    {
+        "name": "camphor",
+        "comedogenicity": 2,
+        "irritancy": 2
+    },
+    {
+        "name": "capric acid",
+        "comedogenicity": 2,
+        "irritancy": 2
+    },
+    {
+        "name": "cetearyl alcohol",
+        "comedogenicity": 2,
+        "irritancy": 2
+    },
+    {
+        "name": "cetyl alcohol",
+        "comedogenicity": 2,
+        "irritancy": 2
+    },
+    {
+        "name": "evening primrose oil",
+        "comedogenicity": 2,
+        "irritancy": 2
+    },
+    {
+        "name": "stearyl alcohol",
+        "comedogenicity": 2,
+        "irritancy": 2
+    },
+    {
+        "name": "tocopherol (vitamin e)",
+        "comedogenicity": 2,
+        "irritancy": 2
+    },
+    {
+        "name": "oleth-10",
+        "comedogenicity": 2,
+        "irritancy": 1
+    },
+    {
+        "name": "vitamin a palmitate",
+        "comedogenicity": 2,
+        "irritancy": 1
+    },
+    {
+        "name": "almond oil",
+        "comedogenicity": 2,
+        "irritancy": 0
+    },
+    {
+        "name": "apricot kernel oil",
+        "comedogenicity": 2,
+        "irritancy": 0
+    },
+    {
+        "name": "ascorbyl palmitate",
+        "comedogenicity": 2,
+        "irritancy": 0
+    },
+    {
+        "name": "avocado oil",
+        "comedogenicity": 2,
+        "irritancy": 0
+    },
+    {
+        "name": "beeswax",
+        "comedogenicity": 2,
+        "irritancy": 0
+    },
+    {
+        "name": "d&c red # 19",
+        "comedogenicity": 2,
+        "irritancy": 0
+    },
+    {
+        "name": "jojoba oil",
+        "comedogenicity": 2,
+        "irritancy": 0
+    },
+    {
+        "name": "lanolin alcohol",
+        "comedogenicity": 2,
+        "irritancy": 0
+    },
+    {
+        "name": "olive oil",
+        "comedogenicity": 2,
+        "irritancy": 0
+    },
+    {
+        "name": "peanut oil",
+        "comedogenicity": 2,
+        "irritancy": 0
+    },
+    {
+        "name": "palmitic acid",
+        "comedogenicity": 2,
+        "irritancy": 0
+    },
+    {
+        "name": "safflower oil",
+        "comedogenicity": 2,
+        "irritancy": 0
+    },
+    {
+        "name": "stearic acid",
+        "comedogenicity": 2,
+        "irritancy": 0
+    },
+    {
+        "name": "caprylic acid",
+        "comedogenicity": 1,
+        "irritancy": 3
+    },
+    {
+        "name": "beta carotene",
+        "comedogenicity": 1,
+        "irritancy": 0
+    },
+    {
+        "name": "butylene glycol",
+        "comedogenicity": 1,
+        "irritancy": 0
+    },
+    {
+        "name": "calendula",
+        "comedogenicity": 1,
+        "irritancy": 0
+    },
+    {
+        "name": "candelilla wax",
+        "comedogenicity": 1,
+        "irritancy": 0
+    },
+    {
+        "name": "carnuba wax",
+        "comedogenicity": 1,
+        "irritancy": 0
+    },
+    {
+        "name": "d&c red # 4",
+        "comedogenicity": 1,
+        "irritancy": 0
+    },
+    {
+        "name": "d&c red # 6",
+        "comedogenicity": 1,
+        "irritancy": 0
+    },
+    {
+        "name": "d&c red # 7",
+        "comedogenicity": 1,
+        "irritancy": 0
+    },
+    {
+        "name": "d&c red # 9",
+        "comedogenicity": 1,
+        "irritancy": 0
+    },
+    {
+        "name": "dimethicone",
+        "comedogenicity": 1,
+        "irritancy": 0
+    },
+    {
+        "name": "glyceryl stearate nse",
+        "comedogenicity": 1,
+        "irritancy": 0
+    },
+    {
+        "name": "lanolin oil",
+        "comedogenicity": 1,
+        "irritancy": 0
+    },
+    {
+        "name": "lanolin wax",
+        "comedogenicity": 1,
+        "irritancy": 0
+    },
+    {
+        "name": "lithiumm stearate",
+        "comedogenicity": 1,
+        "irritancy": 0
+    },
+    {
+        "name": "magnesium stearate",
+        "comedogenicity": 1,
+        "irritancy": 0
+    },
+    {
+        "name": "peg 100 stearate",
+        "comedogenicity": 1,
+        "irritancy": 0
+    },
+    {
+        "name": "polyethylene glycol (peg 400)",
+        "comedogenicity": 1,
+        "irritancy": 0
+    },
+    {
+        "name": "simethicone",
+        "comedogenicity": 1,
+        "irritancy": 0
+    },
+    {
+        "name": "squalene",
+        "comedogenicity": 1,
+        "irritancy": 0
+    },
+    {
+        "name": "talc",
+        "comedogenicity": 1,
+        "irritancy": 0
+    },
+    {
+        "name": "zinc oxide",
+        "comedogenicity": 1,
+        "irritancy": 0
+    },
+    {
+        "name": "acetone",
+        "comedogenicity": 0,
+        "irritancy": 5
+    },
+    {
+        "name": "isopropyl alcohol",
+        "comedogenicity": 0,
+        "irritancy": 4
+    },
+    {
+        "name": "carbomer",
+        "comedogenicity": 0,
+        "irritancy": 1
+    },
+    {
+        "name": "allantoin",
+        "comedogenicity": 0,
+        "irritancy": 0
+    },
+    {
+        "name": "aloe vera",
+        "comedogenicity": 0,
+        "irritancy": 0
+    },
+    {
+        "name": "ascorbic acid",
+        "comedogenicity": 0,
+        "irritancy": 0
+    },
+    {
+        "name": "emu oil",
+        "comedogenicity": 0,
+        "irritancy": 0
+    },
+    {
+        "name": "ethylparaben",
+        "comedogenicity": 0,
+        "irritancy": 0
+    },
+    {
+        "name": "magneseium aluminum silicate",
+        "comedogenicity": 0,
+        "irritancy": 0
+    },
+    {
+        "name": "papain",
+        "comedogenicity": 0,
+        "irritancy": 0
+    },
+    {
+        "name": "propylparaben",
+        "comedogenicity": 0,
+        "irritancy": 0
+    },
+    {
+        "name": "sodium hyaluronate",
+        "comedogenicity": 0,
+        "irritancy": 0
+    },
+    {
+        "name": "sodium pca",
+        "comedogenicity": 0,
+        "irritancy": 0
+    },
+    {
+        "name": "sunflower oil",
+        "comedogenicity": 0,
+        "irritancy": 0
+    }
+]

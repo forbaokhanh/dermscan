@@ -8,7 +8,7 @@ import requests
 from bs4 import BeautifulSoup
 
 # Local application imports
-from dermscan.IngredientLookupError import IngredientLookupError
+from dermscan.models.exceptions import IngredientLookupError
 
 
 def make_request_with_retries(

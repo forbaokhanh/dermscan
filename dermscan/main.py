@@ -2,11 +2,9 @@ import sys
 from pathlib import Path
 from typing import Dict, List, Tuple
 
-import pandas as pd
 import pyperclip
 from thefuzz import fuzz, process
 
-from dermscan.script import Ingredient, MatchedIngredient
 from dermscan.url_parser import fetch_ingredients_from_url
 from dermscan.utils import ensure_list, is_url, print_result
 
@@ -21,7 +19,7 @@ else:
     BASE_DIR = Path(__file__).parent.parent
 
 DATA_FOLDER = BASE_DIR / "data"
-CSV_FILEPATH = str(DATA_FOLDER / "product_info.csv")
+CSV_FILEPATH = str(DATA_FOLDER / "detailed.csv")
 
 
 def parse_input() -> List[str]:
@@ -41,50 +39,15 @@ def parse_input() -> List[str]:
     return [x.lower() for x in list_raw]
 
 
-def load_cache(filepath: str) -> Dict[str, Ingredient]:
-    """
-    Load ingredient data from a CSV file into a dictionary.
-
-    This function reads a CSV file specified by `filepath` and populates a
-    dictionary where the keys are ingredient names and the values are
-    `Ingredient` objects. The function assumes that all ingredient
-    names in the file are unique; if not, an assertion error will be raised.
-
-    Parameters:
-    -----------
-    filepath : str
-        The file path to the CSV file containing ingredient data.
-
-    Returns:
-    --------
-    Dict[str, Ingredient]
-        A dictionary containing ingredient names as keys and `Ingredient` objects as values.
-
-    Raises:
-    -------
-    AssertionError
-        If duplicate ingredient names are found in the CSV file.
-
-    Example:
-    --------
-    >>> load_cache("ingredient_data.csv")
-    {'Water': <Ingredient object>, ...}
-    """
-    df = pd.read_csv(filepath, sep=",")
-    ingredients = {}
-
-    for index, row in df.iterrows():
-        ingredient = Ingredient(
-            row["Name"], int(row["Comedogenicity"]), int(row["Irritancy"])
-        )
-        assert ingredient.name not in ingredients
-        ingredients[ingredient.name] = ingredient
-    return ingredients
-
-
 def compare(
     ingredients: List[str], reference: Dict[str, Ingredient]
 ) -> Tuple[List[Ingredient], List[MatchedIngredient]]:
+    """
+    Compare the list of ingredients to the reference data.
+    :param ingredients:
+    :param reference:
+    :return:
+    """
     reference_names = reference.keys()
     alert_worthy = []
     warning_worthy = []
