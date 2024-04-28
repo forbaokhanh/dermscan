@@ -5,7 +5,7 @@ from fuzzywuzzy import fuzz
 def custom_scorer(query, choices):
     """
     Custom scorer function to calculate similarity scores using different ratios.
-    We will use this function to find the best match for a given query in a list of choices.
+    Extension of the fuzzywuzzy library.
 
     :param query: str, the query string to find the best match for
     :param choices: list of str, the list of choices to search for the best match

@@ -6,7 +6,7 @@ from typing import List, Any
 import click
 
 from dermscan.models import Ingredient
-from dermscan.shared import success, bold_error, info
+from dermscan.utils import success, bold_error, info
 
 
 @click.command("tojson")

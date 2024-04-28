@@ -4,4 +4,4 @@ class Match:
         self.best_match = best_match
 
     def __str__(self):
-        return f"{self.ingredient} -> {self.best_match}"
+        return f"[Original] {self.ingredient} -> [Similar] {self.best_match}"

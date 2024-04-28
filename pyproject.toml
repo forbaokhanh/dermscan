@@ -17,6 +17,9 @@ thefuzz = "^0.20.0"
 click = "^8.1.7"
 fuzzywuzzy = "^0.18.0"
 python-levenshtein = "^0.25.1"
+inquirerpy = "^0.3.4"
+colorama = "^0.4.6"
+tqdm = "^4.66.2"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -31,7 +34,4 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
-dermscan = 'dermscan.cli:cli' # package.module:function
-
-[tool.poetry.files]
-include = ["resources/*"]
+dermscan = 'dermscan.main:cli' # package.module:function
