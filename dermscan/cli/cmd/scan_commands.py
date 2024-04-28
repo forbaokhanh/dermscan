@@ -5,7 +5,7 @@ from InquirerPy import inquirer
 from InquirerPy.validator import PathValidator
 
 from dermscan.cli.cmd.input_commands import parse_ingredients
-from dermscan.utils import success
+from dermscan.utils.printers import show_success
 
 # Define the allowed file options
 ALLOWED_FILES = ["acneclinic.json", "detailed.json", "original.json"]
@@ -18,7 +18,7 @@ def dermscan_run() -> None:
     Search for ingredients in the database.
     """
     ingredients = parse_ingredients()
-    click.echo(success("Input ingredients parsed successfully."))
+    show_success("Input ingredients parsed successfully.")
 
     home_path = os.path.expanduser("~/dev/dermscan/resources/")
     reference_path = inquirer.filepath(

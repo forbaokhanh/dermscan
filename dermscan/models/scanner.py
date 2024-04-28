@@ -4,7 +4,8 @@ import click
 from fuzzywuzzy import process
 
 from dermscan.models import Match
-from dermscan.utils import bold_error, success, info
+from dermscan.utils import success, info
+from dermscan.utils.printers import show_error
 from dermscan.utils.scorer import custom_scorer
 
 
@@ -36,6 +37,6 @@ class ReferenceScanner:
             )
             return
 
-        click.echo(bold_error("Matches found in the database:"))
+        show_error("Matches found in the database:")
         for result in results:
             click.echo(info(str(result)))

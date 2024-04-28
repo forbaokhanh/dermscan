@@ -10,7 +10,8 @@ from colorama import Fore
 from dermscan.models.llm import LLM
 from dermscan.models.parser import parse_html
 from dermscan.models.scraper import UrlScraper
-from dermscan.utils import inputs, info, bold_error
+from dermscan.utils import inputs, info
+from dermscan.utils.printers import show_error
 
 
 @click.command("parse")
@@ -88,7 +89,7 @@ def parse_ingredients(allow_global: bool = False) -> List[str]:
                 ingredients = parse_html(scraper.html, scraper.domain)
                 return ingredients
             except Exception:
-                click.echo(bold_error("Failed to parse ingredients from the URL."))
+                show_error("Failed to parse ingredients from the URL.")
                 return []
         else:
             llm_parser = LLM(parser_choice)

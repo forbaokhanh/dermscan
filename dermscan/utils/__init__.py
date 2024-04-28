@@ -1,1 +1,1 @@
-from .printers import bold_error, success, info
+from .printers import success, info

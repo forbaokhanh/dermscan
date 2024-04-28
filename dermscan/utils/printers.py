@@ -3,9 +3,13 @@ import click
 # from rich import Console
 
 
-def bold_error(message: str) -> str:
-    """Return the message in bold red color."""
-    return click.style(message, fg="red", bold=True)
+def show_error(message: str) -> None:
+    """Print the error message in red color."""
+    click.echo(click.style(f"🚨 {message}", fg="red", bold=True))
+
+
+def show_success(message):
+    click.echo(click.style(f"✅ {message}", fg="green", bold=True))
 
 
 def success(message: str) -> str:

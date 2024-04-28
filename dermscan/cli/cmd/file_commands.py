@@ -4,34 +4,38 @@ import os
 from typing import List, Any
 
 import click
+from InquirerPy import inquirer
+from InquirerPy.validator import PathValidator
 
 from dermscan.models import Ingredient
-from dermscan.utils import success, bold_error, info
+from dermscan.utils.printers import show_error, show_success
+
+RESOURCES_PATH = os.path.expanduser("~/dev/dermscan/resources/")
 
 
-@click.command("tojson")
-@click.option(
-    "--from-path",
-    "-f",
-    "source_path",
-    type=click.Path(exists=True),
-    help="Path to the file to convert.",
-)
-def tojson(source_path: str):
+@click.command("db-format")
+def db_format():
     """Convert a txt or csv file to JSON."""
-    path, extension = os.path.splitext(source_path)
+    home_path = RESOURCES_PATH
+    filepath = inquirer.filepath(
+        message="Enter the path to the resource file you'd like to convert to JSON:",
+        default=home_path,
+        validate=PathValidator(
+            is_file=True,
+            message="File must exist within the 'dermscan/resources/' directory.",
+        ),
+    ).execute()
+
+    filename, extension = os.path.splitext(filepath)
     if extension not in [".txt", ".csv"]:
-        click.echo(
-            bold_error("Invalid file format.")
-            + info(" Please provide a txt or csv file.")
-        )
+        show_error("Invalid file format. Please provide a txt or csv file.")
         return
 
-    json_path = path + ".json"
-    data = _read_contents(source_path, extension)
+    json_path = filename + ".json"
+    data = _read_contents(filepath, extension)
     with open(json_path, "w") as write_file:
         write_file.write(json.dumps(data, indent=4))
-    click.echo(success("Successfully converted the file to JSON. {}".format(json_path)))
+    show_success("Successfully converted the file to JSON. {}".format(json_path))
 
 
 def _read_contents(source_path: str, extension: str) -> List[Any]:
